@@ -1,0 +1,58 @@
+<!----Header-->
+<%- include('layout/header')%>
+<!----Header-->
+
+<!---Main Section---->
+<main id="site-main">
+  <div class="container">
+    <div class="box-nav">
+      <a href="/add-user">
+        <span>Add New User <i class="fa-regular fa-user"></i></span>
+      </a>
+    </div>
+    <!----Form -->
+    <form action="/" method="post">
+      <table class="table">
+        <thead class="thead-dark">
+          <tr>
+            <th>ID</th>
+          
+            <th>Name</th>
+            <th>Email</th>
+            <th>Gender</th>
+            <th>Status</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Loop starts here -->
+           <% for(var i=0;i<users.length;i++) {%>
+          <tr>
+            <td><%=i+1%></td>
+      
+            <td><%=users[i].name%></td>
+            <td><%=users[i].email%></td>
+            <td><%=users[i].gender%></td>
+            <td><%=users[i].status%></td>
+            <td>
+              <a href="/update-user?id=<%=users[i]._id%>" class="btn border-shadow update">
+                <span><i class="fa-regular fa-pen-to-square"></i></span>
+              </a>
+              <a  class="btn border-shadow delete" data-id=<%=users[i]._id%> >
+                <span class="delete_btn"><i class="fa-solid fa-delete-left"></i></span>
+              </a>
+            </td>
+          </tr>
+          <%}%>
+          <!-- Loop ends here -->
+        </tbody>
+      </table>
+    </form>
+    <!----Form -->
+  </div>
+</main>
+<!---Main Section---->
+
+<!----Footer-->
+<%- include('layout/footer')%>
+<!----Footer-->
